@@ -5,10 +5,10 @@
   <Footer></Footer>
 </template>
 <script>
-import NavBar from '../views/layouts/NavBar'
-import SideBar from '../views/layouts/SideBar'
-import Content from '../views/layouts/Content'
-import Footer from '../views/layouts/Footer'
+import NavBar from './adminlte/layouts/NavBar'
+import SideBar from './adminlte/layouts/SideBar'
+import Content from './adminlte/layouts/Content'
+import Footer from './adminlte/layouts/Footer'
 
 export default {
   name: 'Master',
