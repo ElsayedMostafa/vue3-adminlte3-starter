@@ -3,7 +3,9 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu"  ><i class="fas fa-bars"></i></a>
+        <button class="nav-link" role="button" @click="tonToggleMenuSidebar">
+          <i class="fas fa-bars"></i>
+        </button>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
@@ -39,15 +41,18 @@ export default {
     };
   },
   methods:{
-    toggleBodyClass(addRemoveClass, className) {
-      const el = document.body;
-      console.log(el)
-      if (addRemoveClass === 'sidebar-collapse') {
-        el.classList.add(className);
-      } else {
-        el.classList.remove(className);
+    tonToggleMenuSidebar(){
+      const el = document.getElementById('app');
+      const isCollapsed = el.classList.contains('sidebar-collapse');
+      if(isCollapsed){
+        el.classList.remove('sidebar-collapse');
+      }else{
+        el.classList.add('sidebar-collapse');
       }
     },
+  },
+  mounted() {
+
   }
 }
 </script>
