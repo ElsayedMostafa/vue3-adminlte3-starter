@@ -8,12 +8,13 @@
       <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="../../index3.html" method="post">
+        <form @submit.prevent="login">
           <div class="input-group mb-3">
             <input
                 type="email"
                 class="form-control"
                 placeholder="Email"
+                v-model="form.email"
             />
             <div class="input-group-append">
               <div class="input-group-text">
@@ -26,6 +27,7 @@
                 type="password"
                 class="form-control"
                 placeholder="Password"
+                v-model="form.password"
             />
             <div class="input-group-append">
               <div class="input-group-text">
@@ -45,7 +47,7 @@
               <button
                   type="submit"
                   class="btn btn-primary btn-block"
-                  @click="login"
+
               >
                 Sign In
               </button>
@@ -63,11 +65,34 @@
 
 </template>
 <script>
+import {mapActions} from 'vuex'
+
 export default {
+
   name: 'login',
   data() {
     return {
       appElement: '',
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions({
+      signIn: 'auth/signIn',
+    }),
+    login() {
+      this.signIn(this.form)
+          .then(() => {
+            this.$router.replace({
+              name: 'Dashboard',
+            })
+          })
+          .catch(() => {
+            console.log("failed");
+          })
     }
   },
   mounted() {
